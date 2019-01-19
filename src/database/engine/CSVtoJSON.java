@@ -1032,7 +1032,7 @@ public class CSVtoJSON {
     
     public static void main(String[] args) throws IOException, FileNotFoundException, ParseException  {
         QueryParser queryParser=new QueryParser();
-        queryParser.parseQuery("select id,city from C:\\Users\\Suyash\\Desktop\\ipl.csv where id<10");  
+        queryParser.parseQuery("select id,city from ipl.csv where id<10");  
         
         CSVtoJSON ob=new CSVtoJSON();
         

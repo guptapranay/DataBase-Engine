@@ -1,0 +1,6 @@
+id,season,city,date,team1,team2,toss_winner,toss_decision,result,dl_applied,winner,win_by_runs,win_by_wickets,player_of_match,venue,umpire1,umpire2,umpire3
+1,2008,Bangalore,18-04-2008,Kolkata Knight Riders,Royal Challengers Bangalore,Royal Challengers Bangalore,field,normal,0,Kolkata Knight Riders,140,0,BB McCullum,M Chinnaswamy Stadium,Asad Rauf,RE Koertzen,Sarika Prasad
+2,2009,Kolkata,19-04-2009,Mumbai Indians,Rajasthan Royals,Rajasthan Royals,field,normal,0,Rajasthan Royals,80,2,Steve Smith,Eden Gardens,Kumar Dharmasena,Steve Bucknor,Bruce Oxenford
+3,2010,Delhi,12-04-2010,Kings XI Punjab,Mumbai Indians,Mumbai Indians,field,normal,0,Mumbai Indians,17,4,Lasith Malinga,Feroz Shah Kotla Ground,Steve Bucknor,Kumar Dharmasena,Bruce Oxenford
+4,2011,Mumbai,28-04-2011,Royal Challengers Bangalore,Sunrisers Hyderabad,Royal Challengers Bangalore,field,normal,0,Sunrisers Hyderabad,180,6,Kane Williamson,Wankhede Stadium,Bruce Oxenford,Kumar Dharmasena,Dickie Bird
+5,2012,Delhi,25-04-2012,Kolkata Knight Riders,Mumbai Indians,Mumbai Indians,field,normal,0,Kolkata Knight Riders,21,8,Robin Uthappa,Feroz Shah Kotla Ground,Dickie Bird,Simon Taufel,Bruce Oxenford
