@@ -987,7 +987,205 @@ public class CSVtoJSON {
                 }
                 else
                 {
+                    if(QueryParameter.restrictions.get(0).condition.equals("<") || QueryParameter.restrictions.get(1).condition.equals("<"))
+                    {    
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    }
+                    if(QueryParameter.restrictions.get(0).condition.equals("<") || QueryParameter.restrictions.get(1).condition.equals(">"))
+                    {    
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))>Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    }
+                    if(QueryParameter.restrictions.get(0).condition.equals("<") || (QueryParameter.restrictions.get(1).condition.equals("=") && x.matches("[0-9]+")))
+                    {    
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    }
+                    if(QueryParameter.restrictions.get(0).condition.equals("<") || (QueryParameter.restrictions.get(1).condition.equals("=") && !(x.matches("[0-9]+"))))
+                    {   
+                        String g=(String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName);
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || g.equals(QueryParameter.restrictions.get(1).propertyVale))
+                        {   
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next();
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    }
                     
+                    if(QueryParameter.restrictions.get(0).condition.equals(">") || QueryParameter.restrictions.get(1).condition.equals("<"))
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))>Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next();
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    if(QueryParameter.restrictions.get(0).condition.equals(">") || QueryParameter.restrictions.get(1).condition.equals(">"))
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))>Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))>Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    if(QueryParameter.restrictions.get(0).condition.equals(">") || (QueryParameter.restrictions.get(1).condition.equals("=") && x.matches("[0-9]+")))
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))>Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    if(QueryParameter.restrictions.get(0).condition.equals(">") || (QueryParameter.restrictions.get(1).condition.equals("=") && !(x.matches("[0-9]+"))))
+                    {    
+                        String g=(String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName);
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))>Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || g.equals(QueryParameter.restrictions.get(0).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    }
+                    if(QueryParameter.restrictions.get(0).condition.equals("=") || QueryParameter.restrictions.get(1).condition.equals("<"))
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    if(QueryParameter.restrictions.get(0).condition.equals("=") || QueryParameter.restrictions.get(1).condition.equals(">"))
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))>Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    
+                    if(QueryParameter.restrictions.get(0).condition.equals("=") || (QueryParameter.restrictions.get(1).condition.equals("=") && x.matches("[0-9]+")))
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        } 
+                    if(QueryParameter.restrictions.get(0).condition.equals("=") || (QueryParameter.restrictions.get(1).condition.equals("=") && !(x.matches("[0-9]+"))))
+                    {    
+                        String g=(String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName);
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || g.equals(QueryParameter.restrictions.get(0).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    }
+                    
+                    if(QueryParameter.restrictions.get(0).condition.equals("=") || (!(z.matches("[0-9]+")) && QueryParameter.restrictions.get(1).condition.equals("<")))
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    
+                    if(QueryParameter.restrictions.get(0).condition.equals("=") || (!(z.matches("[0-9]+")) && QueryParameter.restrictions.get(1).condition.equals(">")))
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))>Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    
+                    if(QueryParameter.restrictions.get(0).condition.equals("=") || (!(z.matches("[0-9]+")) && QueryParameter.restrictions.get(1).condition.equals("=") && x.matches("[0-9]+")))
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        } 
+                    if(QueryParameter.restrictions.get(0).condition.equals("=") || (!(z.matches("[0-9]+")) && QueryParameter.restrictions.get(1).condition.equals("=") && !(x.matches("[0-9]+"))))
+                    {    
+                        String g=(String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName);
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) || g.equals(QueryParameter.restrictions.get(0).propertyVale))
+                        {
+                            while (itr1.hasNext()) 
+                            {                 
+                                Map.Entry pair = itr1.next(); 
+                                if(QueryParameter.fields.contains((String)pair.getKey()))
+                                jsobject.get(j).put(pair.getKey(), pair.getValue());                
+                            } 
+                            jsonarray.add(jsobject.get(j));                        
+                        }
+                    }
                 }
                 j++;
             }
