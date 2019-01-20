@@ -1037,8 +1037,12 @@ public class CSVtoJSON {
     
     public static void main(String[] args) throws IOException, FileNotFoundException, ParseException  {
         QueryParser queryParser=new QueryParser();
-        queryParser.parseQuery("select * from ipl.csv where id<10 and city=Delhi");  
+        //queryParser.parseQuery("select * from ipl.csv where id<10 and city=Delhi");  
         
+        System.out.println("enter query");
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        queryParser.parseQuery(s);
         CSVtoJSON ob=new CSVtoJSON();
         
         ob.wtiteall();      
