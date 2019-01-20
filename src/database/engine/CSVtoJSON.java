@@ -403,6 +403,7 @@ public class CSVtoJSON {
                 if(QueryParameter.fields.contains("*"))
                 {                    
                     if(QueryParameter.restrictions.get(0).condition.equals("<") && QueryParameter.restrictions.get(1).condition.equals("<"))
+                    {    
                         if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) && Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
                         {
                             while (itr1.hasNext()) 
@@ -412,7 +413,9 @@ public class CSVtoJSON {
                             } 
                             jsonarray.add(jsobject.get(j));                        
                         }
+                    }
                     if(QueryParameter.restrictions.get(0).condition.equals("<") && QueryParameter.restrictions.get(1).condition.equals(">"))
+                    {    
                         if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) && Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))>Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
                         {
                             while (itr1.hasNext()) 
@@ -422,8 +425,9 @@ public class CSVtoJSON {
                             } 
                             jsonarray.add(jsobject.get(j));                        
                         }
-                    
+                    }
                     if(QueryParameter.restrictions.get(0).condition.equals("<") && QueryParameter.restrictions.get(1).condition.equals("=") && x.matches("[0-9]+"))
+                    {    
                         if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) && Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName))==Integer.parseInt(QueryParameter.restrictions.get(1).propertyVale))
                         {
                             while (itr1.hasNext()) 
@@ -433,11 +437,12 @@ public class CSVtoJSON {
                             } 
                             jsonarray.add(jsobject.get(j));                        
                         }
+                    }
                     if(QueryParameter.restrictions.get(0).condition.equals("<") && QueryParameter.restrictions.get(1).condition.equals("=") && !(x.matches("[0-9]+")))
-                    {    
+                    {   
                         String g=(String)jobjectr.get(QueryParameter.restrictions.get(1).propertyName);
-                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) && g.equals(QueryParameter.restrictions.get(0).propertyVale))
-                        {
+                        if(Integer.parseInt((String)jobjectr.get(QueryParameter.restrictions.get(0).propertyName))<Integer.parseInt(QueryParameter.restrictions.get(0).propertyVale) && g.equals(QueryParameter.restrictions.get(1).propertyVale))
+                        {   
                             while (itr1.hasNext()) 
                             {                 
                                 Map.Entry pair = itr1.next(); 
@@ -1030,21 +1035,19 @@ public class CSVtoJSON {
     }
   
     
-            
-    
     public static void main(String[] args) throws IOException, FileNotFoundException, ParseException  {
         QueryParser queryParser=new QueryParser();
-       // queryParser.parseQuery("select id,city from ipl.csv where id<10");  
-       System.out.println("enter the query");
-       
-       Scanner sc=new Scanner(System.in);
-       String s=sc.nextLine();
-        queryParser.parseQuery(s);
+        queryParser.parseQuery("select * from ipl.csv where id<10 and city=Delhi");  
+        
         CSVtoJSON ob=new CSVtoJSON();
         
         ob.wtiteall();      
-        
-        ob.cond1();
+        if(QueryParameter.restrictions.size()<1)
+        ob.writeWithoutRestriction();
+        else if(QueryParameter.restrictions.size()==1)
+            ob.cond1();
+        else
+            ob.cond2();
         
         for(int i=0;i<QueryParameter.aggregateFunctions.size();i++)
         {
@@ -1065,7 +1068,7 @@ public class CSVtoJSON {
           
             
         
-        System.out.println("Output file is generated at C;\\output\\ipl2.jspn");
+        
         
         
         /*for(int i=0;i<row.length;i++)
