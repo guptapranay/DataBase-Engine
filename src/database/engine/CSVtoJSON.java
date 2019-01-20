@@ -1030,10 +1030,16 @@ public class CSVtoJSON {
     }
   
     
+            
+    
     public static void main(String[] args) throws IOException, FileNotFoundException, ParseException  {
         QueryParser queryParser=new QueryParser();
-        queryParser.parseQuery("select id,city from ipl.csv where id<10");  
-        
+       // queryParser.parseQuery("select id,city from ipl.csv where id<10");  
+       System.out.println("enter the query");
+       
+       Scanner sc=new Scanner(System.in);
+       String s=sc.nextLine();
+        queryParser.parseQuery(s);
         CSVtoJSON ob=new CSVtoJSON();
         
         ob.wtiteall();      
@@ -1059,7 +1065,7 @@ public class CSVtoJSON {
           
             
         
-        
+        System.out.println("Output file is generated at C;\\output\\ipl2.jspn");
         
         
         /*for(int i=0;i<row.length;i++)
